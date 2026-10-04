@@ -1,0 +1,12 @@
+# Python / Virtual Environment
+backend/venv/
+__pycache__/
+*.pyc
+
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+
+# System-Dateien
+.DS_Store
+Thumbs.db
