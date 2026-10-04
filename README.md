@@ -19,9 +19,11 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens:
 | DHT20 Sensor Pin | NodeMCU Pin | Funktion | Drahtfarbe (im Diagramm) |
 | :--- | :--- | :--- | :--- |
 | **Pin 1 (VDD)** | `3V3` | Stromversorgung | Rot 🔴 |
-| **Pin 2 (SDA)** | `D2` (GPIO4) | I²C Data Line | Grau 🩶 |
-| **Pin 3 (GND)** | `GND` | Masse | Schwarz 🖤 |
-| **Pin 4 (SCL)** | `D1` (GPIO5) | I²C Clock Line | Braun 🤎 |
+| **Pin 2 (SDA)** | `D2` (GPIO4) | I²C Data Line | Grau ⚪ |
+| **Pin 3 (GND)** | `GND` | Masse | Schwarz ⚫ |
+| **Pin 4 (SCL)** | `D1` (GPIO5) | I²C Clock Line | Braun 🟤 |
+
+---
 
 ## 🏗️ Systemarchitektur
 
@@ -40,15 +42,14 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens:
                                           (Tailwind & Chart.js)
 ```
 1. **Firmware (`firmware/`):** C++ / PlatformIO – Liest den DHT20-Sensor alle 60 Sekunden aus und überträgt Temperatur- sowie Luftfeuchtewerte via JSON-Payload per HTTP POST an den Backend-Server.
-
 2. **Backend (`backend/`):** FastAPI (Python) – Verwaltet die Endpunkte, cached Open-Meteo Referenzdaten (`requests-cache`) und führt Plausibilitätsprüfungen durch.
-
 3. **Plausibilitäts-Engine:**
    - **Grenzwerte:** Prüfung auf extreme Werte (Temperatur: -30°C bis 60°C; Feuchtigkeit: 0% bis 100%).
    - **Sprungerkennung:** Identifiziert plötzliche Messwertanstiege (ΔT > 10°C/min).
    - **API-Abgleich:** Vergleicht lokale Messwerte direkt mit der Open-Meteo Referenz für Bad Waldsee (ΔT > 5°C erzeugt Warnhinweis).
-
 4. **Frontend (`backend/static/`):** HTML5, Tailwind CSS & Chart.js – Responsive Dark-Mode Dashboard mit Live-Status, Fehler-Badges und synchronisiertem Temperaturverlauf.
+
+---
 
 ## 🚦 Entwicklungsstatus
 
@@ -56,26 +57,26 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens:
 - [x] **Phase 2: FastAPI Backend & API-Integration** – Grundgerüst, Open-Meteo Anbindung mit Cache/Retry.
 - [x] **Phase 3: Plausibilitätsprüfung & Unit-Tests** – Ausführliche Testsuite mit `pytest` (5/5 Tests bestanden).
 - [x] **Phase 4: Live Frontend Dashboard** – Auto-Polling, Dark-Mode Layout, Offline-Erkennung & Chart.js Visualisierung.
+- [ ] **Phase 5: Persistenz & Alerting** – Datenbank-Anbindung und Benachrichtigungssystem.
 
-## Architektur
-- **Firmware:** ESP8266 / NodeMCU mit DHT20 Sensor (sendet per HTTP POST alle 60 Sekunden).
-- **Backend:** FastAPI (Python) mit Plausibilitäts-Engine und Caching-Anbindung an Open-Meteo.
-- **Frontend:** Single-Page Dashboard (Tailwind CSS, Chart.js, HTML5).
+---
 
-## Status der Entwicklungsphasen
-- [x] **Phase 1:** ESP8266 Firmware & HTTP-Kommunikation
-- [x] **Phase 2:** FastAPI Backend & Open-Meteo Integration
-- [x] **Phase 3:** Server-seitige Plausibilitätsprüfung & Unit-Testing (5/5 Tests grün)
-- [x] **Phase 4:** Live Frontend Dashboard (Dark-Mode, Chart.js, Auto-Refresh)
-- [ ] **Phase 5:** Erweiterte Systemverwaltung & Alerting
+## 🚀 Schnellstart & Installation
 
-## Starten des Systems
-1. **Backend starten:**
-   ```bash
-   cd backend
-   source venv/Scripts/activate
-   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+### 1. Backend starten
+Voraussetzung: Python 3.10+ installiert.
 
+```bash
+# In den Backend-Ordner wechseln
+cd backend
+
+# Virtuelle Umgebung aktivieren (Windows Git Bash / Bash)
+source venv/Scripts/activate   # Unter Linux/macOS: source venv/bin/activate
+
+# Server starten
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+---
 
 ## 📁 Projektstruktur
 
