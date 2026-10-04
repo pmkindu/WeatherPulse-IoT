@@ -76,6 +76,17 @@ source venv/Scripts/activate   # Unter Linux/macOS: source venv/bin/activate
 # Server starten
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
+### 2. Dashboard öffnen
+Öffne nach dem Start den Browser unter:  
+👉 **`http://localhost:8000`**
+
+### 3. Unit-Tests ausführen
+Um die Plausibilitäts-Engine und die API-Routen zu überprüfen:
+
+```bash
+cd backend
+pytest -v
+```
 ---
 
 ## 📁 Projektstruktur
