@@ -91,17 +91,19 @@ pytest -v
 
 ## 📁 Projektstruktur
 
+```text
 WeatherPulse-IoT/
-├── backend/
-│   ├── main.py              # FastAPI Server & Plausibilitätslogik
-│   ├── test_main.py         # Pytest Unit-Testsuite
-│   ├── static/
-│   │   └── index.html       # Dashboard UI (Tailwind CSS, Chart.js)
-│   └── venv/                # Python Virtual Environment
-├── firmware/
-│   ├── src/
-│   │   └── main.cpp         # ESP8266 C++ Code (PlatformIO)
-│   └── platformio.ini       # PlatformIO Konfiguration
-├── hardware_schema.png      # Anschlussdiagramm
-└── README.md                # Dokumentation
+├── 📂 backend/
+│   ├── 📂 static/
+│   │   └── 📄 index.html          # Dashboard UI (Tailwind CSS & Chart.js)
+│   ├── 📄 main.py                 # FastAPI Server & Plausibilitätslogik
+│   ├── 📄 test_main.py            # Pytest Unit-Testsuite
+│   └── 📂 venv/                   # Python Virtual Environment
+├── 📂 firmware/
+│   ├── 📂 src/
+│   │   └── 📄 main.cpp            # ESP8266 C++ Firmware (PlatformIO)
+│   └── 📄 platformio.ini          # PlatformIO Projekt-Konfiguration
+├── 🖼️ hardware_schema.png         # Hardware-Schaltplan
+└── 📄 README.md                   # Projektdokumentation
+```
 
