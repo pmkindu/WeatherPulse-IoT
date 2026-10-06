@@ -27,16 +27,17 @@ jobs:
         with:
             python-version: '3.11'
 
-      - name: Install dependencies & Run pytest
-        run: |
-            pip install -r backend/requirements.txt
-            pytest
-
       - name: Build NodeMCU Firmware (PlatformIO Check)
         run: |
             pip install platformio
             cd firmware
             pio run  
+
+      - name: Install dependencies & Run pytest
+        run: |
+            pip install -r backend/requirements.txt
+            mkdir -p backend/static
+            pytest
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
