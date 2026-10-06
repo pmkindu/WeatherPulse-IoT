@@ -9,7 +9,8 @@ const char* ssid = "Prince Box 2";         // WiFi SSID eintragen
 const char* password = "22478026228893134190"; // WiFi Passwort eintragen
 
 // PC-IP
-const char* serverUrl = "http://192.168.178.21:8000/telemetry";
+//const char* serverUrl = "http://192.168.178.21:8000/telemetry";
+const char* serverUrl = "http://63.187.26.225:8000/telemetry";
 
 DHT20 dht;
 WiFiClient wifiClient;
@@ -56,7 +57,7 @@ void loop() {
       http.addHeader("Content-Type", "application/json");
 
       // JSON Payload aufbauen
-      String jsonPayload = "{\"temperature\": " + String(temp) + ", \"humidity\": " + String(hum) + "}";
+      String jsonPayload = "{\"temperature\":" + String(temp) + ", \"humidity\":" + String(hum) + "}";
 
       int httpResponseCode = http.POST(jsonPayload);
 
