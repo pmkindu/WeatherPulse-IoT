@@ -1,12 +1,33 @@
 from unittest.mock import patch
-from fastapi.testclient import TestClient
+from httpx import AsyncClient, ASGITransport
+import pytest
 from main import app, telemetry_db, fetch_open_meteo_weather
 
 
-try:
-    client = TestClient(app)
-except TypeError:
-    client = TestClient(app=app)
+@pytest.fixture
+def anyio_backend():
+    return 'asyncio'
+
+class SyncTestClient:
+    def __init__(self, app):
+        self.app = app
+        self.transport = ASGITransport(app=app)
+
+    def get(self, url, **kwargs):
+        import asyncio
+        async def _get():
+            async with AsyncClient(transport=self.transport, base_url="http://testserver") as client:
+                return await client.get(url, **kwargs)
+        return asyncio.run(_get())
+
+    def post(self, url, **kwargs):
+        import asyncio
+        async def _post():
+            async with AsyncClient(transport=self.transport, base_url="http://testserver") as client:
+                return await client.post(url, **kwargs)
+        return asyncio.run(_post())
+
+client = SyncTestClient(app)
 
 
 def setup_function():
