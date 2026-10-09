@@ -25,19 +25,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-            python-version: '3.11'
+          python-version: '3.11'
 
       - name: Build NodeMCU Firmware (PlatformIO Check)
         run: |
-            pip install platformio
-            cd firmware
-            pio run  
+          pip install platformio
+          cd firmware
+          pio run
 
       - name: Install dependencies & Run pytest
         run: |
-            pip install -r backend/requirements.txt
-            mkdir -p backend/static
-            pytest
+          pip install -r backend/requirements.txt
+          mkdir -p backend/static
+          pytest
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
