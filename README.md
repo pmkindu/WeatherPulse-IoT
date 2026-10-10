@@ -10,6 +10,7 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens 
 
 ![Hardware Schaltplan](weatherpulse_iot_hardware_schema.png)
 
+
 ### Komponenten:
 - **Mikrocontroller:** NodeMCU V3 (ESP8266)
 - **Sensor:** DHT20 (I²C Temperatur- und Luftfeuchtigkeitssensor)
@@ -125,7 +126,8 @@ WeatherPulse-IoT/
 │   │   └── 📄 main.cpp            # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
 │   └── 📄 platformio.ini          # PlatformIO Projekt-Konfiguration
 ├── 📄 .dockerignore               # Ausschlüsse für Docker Builds
-├── 🖼️ hardware_schema.png         # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
+├── 🖼️ weatherpulse_iot_
+|      hardware_schema.png          # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
 └── 📄 README.md                   # Projektdokumentation
 ```
 
