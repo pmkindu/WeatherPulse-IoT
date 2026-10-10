@@ -8,7 +8,7 @@
 
 Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens inklusive Sensorik und Display:
 
-![Hardware Schaltplan](hardware_schema.png)
+![Hardware Schaltplan](weatherpulse_iot_hardware_schema.png)
 
 ### Komponenten:
 - **Mikrocontroller:** NodeMCU V3 (ESP8266)
