@@ -9,4 +9,4 @@ firmware/.vscode/
 
 # System-Dateien
 .DS_Store
-Thumbs.db
+Thumbs.db*.sqlite

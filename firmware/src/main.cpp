@@ -12,8 +12,9 @@ const char* ssid = "Prince Box 2";               // WiFi SSID
 const char* password = "22478026228893134190";   // WiFi Passwort
 
 // Server-URL
-// const char* serverUrl = "http://192.168.178.21:8000/telemetry";
-const char* serverUrl = "http://63.187.26.225:8000/telemetry";
+const char* serverUrl = "http://192.168.178.21:8000/telemetry";
+// AWS-Server
+//const char* serverUrl = "http://63.187.26.225:8000/telemetry";
 
 // --- SENSOR & DISPLAY INSTANZEN ---
 DHT20 dht;

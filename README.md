@@ -68,6 +68,11 @@ Beide I²C-Geräte (DHT20 & OLED) teilen sich die Bus-Leitungen **SDA** (GPIO4 /
 
 ---
 
+## 📊 Live Dashboard Benutzeroberfläche
+![Live Dashboard](dashboard_preview.png)
+
+---
+
 ## 🚦 Entwicklungsstatus
 
 - [x] **Phase 1: Hardware & Firmware** – Einbindung des DHT20 via I²C und stabile Wi-Fi-Übertragung per ESP8266.
@@ -126,8 +131,8 @@ WeatherPulse-IoT/
 │   │   └── 📄 main.cpp            # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
 │   └── 📄 platformio.ini          # PlatformIO Projekt-Konfiguration
 ├── 📄 .dockerignore               # Ausschlüsse für Docker Builds
-├── 🖼️ weatherpulse_iot_
-|      hardware_schema.png          # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
+├── 🖼️ dashboard_preview.png        # Screenshot des Live Dark Dashboards
+├── 🖼️ weatherpulse_iot_hardware_schema.png  # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
 └── 📄 README.md                   # Projektdokumentation
 ```
 
