@@ -11,7 +11,7 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens 
 ![Hardware Schaltplan](weatherpulse_iot_hardware_schema.png)
 
 ### Reeller Hardware-Aufbau des Prototyps:
-![Reeller Hardware-Aufbau](weatherpulse_iot_reeller_hardware_aufbau.jpg)
+![Reeller Hardware-Aufbau](weatherpulse_iot_reeller_hardware_aufbau.png)
 
 ### Komponenten:
 - **Mikrocontroller:** NodeMCU V3 (ESP8266)
@@ -135,7 +135,7 @@ WeatherPulse-IoT/
 ├── 📄 .dockerignore                         # Ausschlüsse für Docker Builds
 ├── 🖼️ dashboard_preview.png                 # Screenshot des Live Dark Dashboards
 ├── 🖼️ weatherpulse_iot_hardware_schema.png  # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
-├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.jpg # Reeller Hardware-Aufbau des IoT-Knotens
+├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png    # Reeller Hardware-Aufbau des IoT-Knotens
 └── 📄 README.md                             # Projektdokumentation
 ```
 
