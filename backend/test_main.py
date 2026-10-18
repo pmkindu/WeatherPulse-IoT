@@ -50,7 +50,7 @@ def test_read_status():
 
 
 def test_post_telemetry_success():
-    # Holen der aktuellen Live-Wert, damit die Abweichung im Test immer 0 ist
+    # Holen der aktuellen Live-Werte, damit die Abweichung im Test immer 0 ist
     ext_weather = client.get("/external-weather").json()
     ref_temp = ext_weather.get("temperature", 15.0)
 
@@ -89,7 +89,7 @@ def test_post_telemetry_sudden_jump():
 
 
 def test_get_telemetry_history():
-    # Testen der Historie-Abfrage
+    # Testen der In-Memory Historie-Abfrage
     client.post("/telemetry", json={"temperature": 22.5, "humidity": 45.0})
     response = client.get("/telemetry")
     assert response.status_code == 200
@@ -114,3 +114,43 @@ def test_get_external_weather_failure():
         response = client.get("/external-weather")
         assert response.status_code == 503
         assert response.json()["detail"] == "Wetter-API nicht erreichbar"
+
+
+# --- NEUE TESTS FÜR VALIDIERUNG & DATENBANK-PERSISTENZ ---
+
+def test_post_telemetry_missing_fields():
+    # Testet, ob FastAPI fehlende Pflichtfelder (humidity fehlt) mit 422 abfängt
+    payload = {"temperature": 20.0}
+    response = client.post("/telemetry", json=payload)
+    assert response.status_code == 422
+
+
+def test_post_telemetry_invalid_types():
+    # Testet falsche Datentypen (String statt Float)
+    payload = {"temperature": "ungültig", "humidity": "auch_ungültig"}
+    response = client.post("/telemetry", json=payload)
+    assert response.status_code == 422
+
+
+def test_get_db_history():
+    # Testet den neuen SQLite-Datenbank-Historienendpunkt (/api/history)
+    client.post("/telemetry", json={"temperature": 19.5, "humidity": 60.0})
+    response = client.get("/api/history")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) >= 1
+    assert data[0]["temperature"] == 19.5
+    assert "status" in data[0]
+    assert "message" in data[0]
+
+
+def test_get_db_history_with_limit():
+    # Testet den Parameter-Query (Limit) für die Datenbankabfrage
+    client.post("/telemetry", json={"temperature": 20.0, "humidity": 55.0})
+    client.post("/telemetry", json={"temperature": 21.0, "humidity": 56.0})
+    response = client.get("/api/history?limit=1")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) == 1
