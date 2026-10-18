@@ -114,8 +114,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 👉 **`http://localhost:8000`**
 
 ### 3. Unit-Tests ausführen
-![Tests](https://img.shields.io/badge/Tests-12%2F12%20passed-brightgreen?style=flat-square&logo=pytest)
-![Coverage](https://img.shields.io/badge/Coverage-94%25-blue?style=flat-square)
 Um die Plausibilitäts-Engine und die API-Routen zu überprüfen:
 
 ```bash
@@ -123,8 +121,8 @@ cd backend
 pytest -v --cov=main
 ```
 Test-Ergebnis & Abdeckung:
-Bestandene Tests: 12 / 12 (100% Passed)
-Code Coverage: 94 %
+- Bestandene Tests: 12 / 12 (100% Passed)
+- Code Coverage: 94 %
 
 ![Test Coverage](weatherpulse_iot_test_coverage.png)
 ---
@@ -153,5 +151,6 @@ WeatherPulse-IoT/
 ├── 🖼️ swagger_api_docs.png                       # Screenshot der FastAPI Swagger UI Dokumentation
 ├── 🖼️ weatherpulse_iot_hardware_schema.png       # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
 ├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png     # Reeller Hardware-Aufbau des IoT-Knotens
+├── 🖼️ weatherpulse_iot_test_coverage.png         # Screenshot des Test Covarages  
 └── 📄 README.md                                  # Projektdokumentation                       
 ```
