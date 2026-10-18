@@ -10,6 +10,8 @@ Das nachfolgende Anschlussdiagramm zeigt den genauen Aufbau des IoT-Messknotens 
 
 ![Hardware Schaltplan](weatherpulse_iot_hardware_schema.png)
 
+### Reeller Hardware-Aufbau des Prototyps:
+![Reeller Hardware-Aufbau](weatherpulse_iot_reeller_hardware_aufbau.jpg)
 
 ### Komponenten:
 - **Mikrocontroller:** NodeMCU V3 (ESP8266)
@@ -118,21 +120,22 @@ pytest -v
 WeatherPulse-IoT/
 ├── 📂 .github/
 │   └── 📂 workflows/
-│       └── 📄 deploy.yml           # GitHub Actions CI/CD Pipeline (Test & AWS Deployment)
+│       └── 📄 deploy.yml                   # GitHub Actions CI/CD Pipeline (Test & AWS Deployment)
 ├── 📂 backend/
 │   ├── 📂 static/
-│   │   └── 📄 index.html          # Dashboard UI (Tailwind CSS & Chart.js)
-│   ├── 📄 Dockerfile              # Docker Containerisierung für AWS ECS
-│   ├── 📄 main.py                 # FastAPI Server & Plausibilitätslogik
-│   ├── 📄 requirements.txt        # Python Abhängigkeiten
-│   └── 📄 test_main.py            # Pytest Unit-Testsuite (Python 3.14+ kompatibel)
+│   │   └── 📄 index.html                   # Dashboard UI (Tailwind CSS & Chart.js)
+│   ├── 📄 Dockerfile                       # Docker Containerisierung für AWS ECS
+│   ├── 📄 main.py                          # FastAPI Server & Plausibilitätslogik
+│   ├── 📄 requirements.txt                 # Python Abhängigkeiten
+│   └── 📄 test_main.py                     # Pytest Unit-Testsuite (Python 3.14+ kompatibel)
 ├── 📂 firmware/
 │   ├── 📂 src/
-│   │   └── 📄 main.cpp            # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
-│   └── 📄 platformio.ini          # PlatformIO Projekt-Konfiguration
-├── 📄 .dockerignore               # Ausschlüsse für Docker Builds
-├── 🖼️ dashboard_preview.png        # Screenshot des Live Dark Dashboards
+│   │   └── 📄 main.cpp                     # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
+│   └── 📄 platformio.ini                   # PlatformIO Projekt-Konfiguration
+├── 📄 .dockerignore                         # Ausschlüsse für Docker Builds
+├── 🖼️ dashboard_preview.png                 # Screenshot des Live Dark Dashboards
 ├── 🖼️ weatherpulse_iot_hardware_schema.png  # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
-└── 📄 README.md                   # Projektdokumentation
+├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.jpg # Reeller Hardware-Aufbau des IoT-Knotens
+└── 📄 README.md                             # Projektdokumentation
 ```
 
