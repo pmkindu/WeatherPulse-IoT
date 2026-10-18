@@ -75,21 +75,29 @@ Beide I²C-Geräte (DHT20 & OLED) teilen sich die Bus-Leitungen **SDA** (GPIO4 /
 
 ---
 
+## 🔌 API-Schnittstellendokumentation (Swagger UI)
+
+Das FastAPI-Backend stellt eine interaktive Swagger-UI-Dokumentation unter `/docs` bereit, über die sämtliche Endpunkte (Telemetrie, Historie und Status) direkt eingesehen und getestet werden können:
+
+![Swagger UI API Dokumentation](swagger_api_docs.png)
+
+---
+
 ## 🚦 Entwicklungsstatus
 
-- [x] **Phase 1: Hardware & Firmware** – Einbindung des DHT20 via I²C und stabile Wi-Fi-Übertragung per ESP8266.
-- [x] **Phase 2: FastAPI Backend & API-Integration** – Grundgerüst, Open-Meteo Anbindung mit Cache/Retry.
-- [x] **Phase 3: Plausibilitätsprüfung & Unit-Tests** – Ausführliche Testsuite mit `pytest` (5/5 Tests bestanden).
-- [x] **Phase 4: Live Frontend Dashboard** – Auto-Polling, Dark-Mode Layout, Offline-Erkennung & Chart.js Visualisierung.
-- [x] **Phase 5: CI/CD & Cloud Deployment** – Dockerization & automatisierte Deployment-Pipeline via GitHub Actions zu AWS ECS.
-- [ ] **Phase 6: Persistenz & Alerting** – Datenbank-Anbindung und Benachrichtigungssystem.
+- [x] **Phase 1: Hardware & Firmware** – Einbindung des DHT20 via I²C und stabile Wi-Fi-Übertragung per ESP8266
+- [x] **Phase 2: FastAPI Backend & API-Integration** – Grundgerüst, Open-Meteo Anbindung mit Cache/Retry
+- [x] **Phase 3: Plausibilitätsprüfung & Unit-Tests** – Ausführliche Testsuite mit `pytest` (5/5 Tests bestanden)
+- [x] **Phase 4: Live Frontend Dashboard** – Auto-Polling, Dark-Mode Layout, Offline-Erkennung & Chart.js Visualisierung
+- [x] **Phase 5: CI/CD & Cloud Deployment** – Dockerization & automatisierte Deployment-Pipeline via GitHub Actions zu AWS ECS
+- [x] **Phase 6: Persistenz & Alerting** – SQLAlchemy SQLite-Datenbankanbindung, Historien-API & System-Alerting
 
 ---
 
 ## 🚀 Schnellstart & Installation
 
 ### 1. Backend starten
-Voraussetzung: Python 3.10+ installiert.
+Voraussetzung: Python 3.10+ installiert
 
 ```bash
 # In den Backend-Ordner wechseln
@@ -120,22 +128,23 @@ pytest -v
 WeatherPulse-IoT/
 ├── 📂 .github/
 │   └── 📂 workflows/
-│       └── 📄 deploy.yml                   # GitHub Actions CI/CD Pipeline (Test & AWS Deployment)
+│       └── 📄 deploy.yml                         # GitHub Actions CI/CD Pipeline (Test & AWS Deployment)
 ├── 📂 backend/
 │   ├── 📂 static/
-│   │   └── 📄 index.html                   # Dashboard UI (Tailwind CSS & Chart.js)
-│   ├── 📄 Dockerfile                       # Docker Containerisierung für AWS ECS
-│   ├── 📄 main.py                          # FastAPI Server & Plausibilitätslogik
-│   ├── 📄 requirements.txt                 # Python Abhängigkeiten
-│   └── 📄 test_main.py                     # Pytest Unit-Testsuite (Python 3.14+ kompatibel)
+│   │   └── 📄 index.html                         # Dashboard UI (Tailwind CSS & Chart.js)
+│   ├── 📄 Dockerfile                             # Docker Containerisierung für AWS ECS
+│   ├── 📄 main.py                                # FastAPI Server & Plausibilitätslogik
+│   ├── 📄 requirements.txt                       # Python Abhängigkeiten
+│   └── 📄 test_main.py                           # Pytest Unit-Testsuite (Python 3.14+ kompatibel)
 ├── 📂 firmware/
 │   ├── 📂 src/
-│   │   └── 📄 main.cpp                     # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
-│   └── 📄 platformio.ini                   # PlatformIO Projekt-Konfiguration
-├── 📄 .dockerignore                         # Ausschlüsse für Docker Builds
-├── 🖼️ dashboard_preview.png                 # Screenshot des Live Dark Dashboards
-├── 🖼️ weatherpulse_iot_hardware_schema.png  # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
-├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png    # Reeller Hardware-Aufbau des IoT-Knotens
-└── 📄 README.md                             # Projektdokumentation
+│   │   └── 📄 main.cpp                           # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
+│   └── 📄 platformio.ini                         # PlatformIO Projekt-Konfiguration
+├── 📄 .dockerignore                              # Ausschlüsse für Docker Builds
+├── 🖼️ dashboard_preview.png                      # Screenshot des Live Dark Dashboards
+├── 🖼️ swagger_api_docs.png                       # Screenshot der FastAPI Swagger UI Dokumentation
+├── 🖼️ weatherpulse_iot_hardware_schema.png       # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
+├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png      # Reeller Hardware-Aufbau des IoT-Knotens
+└── 📄 README.md                                  # Projektdokumentation                            # Projektdokumentation
 ```
 

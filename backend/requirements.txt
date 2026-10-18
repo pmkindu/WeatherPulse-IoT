@@ -26,3 +26,4 @@ uvicorn==0.53.0
 openmeteo-requests
 requests-cache
 retry-requests
+sqlalchemy==2.0.25
