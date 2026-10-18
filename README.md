@@ -145,6 +145,6 @@ WeatherPulse-IoT/
 ├── 🖼️ swagger_api_docs.png                       # Screenshot der FastAPI Swagger UI Dokumentation
 ├── 🖼️ weatherpulse_iot_hardware_schema.png       # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
 ├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png      # Reeller Hardware-Aufbau des IoT-Knotens
-└── 📄 README.md                                  # Projektdokumentation                            # Projektdokumentation
+└── 📄 README.md                                  # Projektdokumentation                            
 ```
 
