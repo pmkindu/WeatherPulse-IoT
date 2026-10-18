@@ -87,7 +87,7 @@ Das FastAPI-Backend stellt eine interaktive Swagger-UI-Dokumentation unter `/doc
 
 - [x] **Phase 1: Hardware & Firmware** – Einbindung des DHT20 via I²C und stabile Wi-Fi-Übertragung per ESP8266
 - [x] **Phase 2: FastAPI Backend & API-Integration** – Grundgerüst, Open-Meteo Anbindung mit Cache/Retry
-- [x] **Phase 3: Plausibilitätsprüfung & Unit-Tests** – Ausführliche Testsuite mit `pytest` (5/5 Tests bestanden)
+- [x] **Phase 3: Plausibilitätsprüfung & Unit-Tests** – Ausführliche Testsuite mit `pytest` (12/12 Tests bestanden)
 - [x] **Phase 4: Live Frontend Dashboard** – Auto-Polling, Dark-Mode Layout, Offline-Erkennung & Chart.js Visualisierung
 - [x] **Phase 5: CI/CD & Cloud Deployment** – Dockerization & automatisierte Deployment-Pipeline via GitHub Actions zu AWS ECS
 - [x] **Phase 6: Persistenz & Alerting** – SQLAlchemy SQLite-Datenbankanbindung, Historien-API & System-Alerting
@@ -114,12 +114,19 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 👉 **`http://localhost:8000`**
 
 ### 3. Unit-Tests ausführen
+![Tests](https://img.shields.io/badge/Tests-12%2F12%20passed-brightgreen?style=flat-square&logo=pytest)
+![Coverage](https://img.shields.io/badge/Coverage-94%25-blue?style=flat-square)
 Um die Plausibilitäts-Engine und die API-Routen zu überprüfen:
 
 ```bash
 cd backend
-pytest -v
+pytest -v --cov=main
 ```
+Test-Ergebnis & Abdeckung:
+Bestandene Tests: 12 / 12 (100% Passed)
+Code Coverage: 94 %
+
+![Test Coverage](weatherpulse_iot_test_coverage.png)
 ---
 
 ## 📁 Projektstruktur
@@ -132,10 +139,11 @@ WeatherPulse-IoT/
 ├── 📂 backend/
 │   ├── 📂 static/
 │   │   └── 📄 index.html                         # Dashboard UI (Tailwind CSS & Chart.js)
+│   ├── 📄 database.py                            # SQLAlchemy Datenbankmodell & Session-Setup
 │   ├── 📄 Dockerfile                             # Docker Containerisierung für AWS ECS
-│   ├── 📄 main.py                                # FastAPI Server & Plausibilitätslogik
+│   ├── 📄 main.py                                # FastAPI Server, Plausibilitätslogik & Alerting
 │   ├── 📄 requirements.txt                       # Python Abhängigkeiten
-│   └── 📄 test_main.py                           # Pytest Unit-Testsuite (Python 3.14+ kompatibel)
+│   └── 📄 test_main.py                           # Pytest Unit-Testsuite (12 Tests, Python 3.14+ kompatibel)
 ├── 📂 firmware/
 │   ├── 📂 src/
 │   │   └── 📄 main.cpp                           # ESP8266 C++ Firmware (DHT20, OLED & HTTP POST)
@@ -144,7 +152,6 @@ WeatherPulse-IoT/
 ├── 🖼️ dashboard_preview.png                      # Screenshot des Live Dark Dashboards
 ├── 🖼️ swagger_api_docs.png                       # Screenshot der FastAPI Swagger UI Dokumentation
 ├── 🖼️ weatherpulse_iot_hardware_schema.png       # Hardware-Schaltplan mit ESP8266, DHT20 & OLED
-├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png      # Reeller Hardware-Aufbau des IoT-Knotens
-└── 📄 README.md                                  # Projektdokumentation                            
+├── 🖼️ weatherpulse_iot_reeller_hardware_aufbau.png     # Reeller Hardware-Aufbau des IoT-Knotens
+└── 📄 README.md                                  # Projektdokumentation                       
 ```
-
