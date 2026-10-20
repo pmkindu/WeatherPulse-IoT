@@ -121,7 +121,7 @@ cd backend
 pytest -v --cov=main
 ```
 Test-Ergebnis & Abdeckung:
-- Bestandene Tests: 12 / 12 (100% Passed)
+- Bestandene Tests: 12/12 (100% Passed)
 - Code Coverage: 94 %
 
 ![Test Coverage](weatherpulse_iot_test_coverage.png)
